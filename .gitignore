@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist-info/
+*.egg
+
+# PyInstaller
+build/
+dist/
+*.spec.bak
+
+# Tesseract (bundled copy)
+tesseract/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Settings (contains API keys)
+settings.json
+release/
+*.zip
+
+# Logs
+*.log

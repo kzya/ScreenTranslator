@@ -1,0 +1,6 @@
+mss==9.0.1
+Pillow>=10.4.0
+pytesseract==0.3.10
+openai==1.52.0
+pystray
+pyperclip>=0.19.5
