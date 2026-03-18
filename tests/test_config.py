@@ -77,13 +77,14 @@ class TestConfigManager(unittest.TestCase):
 
         new_settings_path = Path(self.temp_dir.name) / "appdata" / "settings.json"
 
-        with patch.object(ConfigManager, "get_default_settings_path", return_value=new_settings_path):
-            with patch.object(ConfigManager, "get_legacy_settings_path", return_value=legacy_path):
-                manager = ConfigManager()
+        with patch.dict(os.environ, {"OPENAI_API_KEY": ""}, clear=False):
+            with patch.object(ConfigManager, "get_default_settings_path", return_value=new_settings_path):
+                with patch.object(ConfigManager, "get_legacy_settings_path", return_value=legacy_path):
+                    manager = ConfigManager()
 
-        self.assertTrue(new_settings_path.exists())
-        self.assertEqual(manager.get("source_lang"), "Japanese")
-        self.assertEqual(manager.get_api_key(), "legacy-key")
+            self.assertTrue(new_settings_path.exists())
+            self.assertEqual(manager.get("source_lang"), "Japanese")
+            self.assertEqual(manager.get_api_key(), "legacy-key")
 
 
 if __name__ == "__main__":
